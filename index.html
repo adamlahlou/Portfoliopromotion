@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+<body>
+    <section class="container">
+        <div class="content">
+        <h3>scroll to begin</h3>
+            <img src="Ravensbourne.png">
+        </div>
+    </section>
+
+    <div id="set-height"></div>
+
+    <video id="v0" tabindex="0", autobuffer preload>
+        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="IMG-1944.mp4"></source>
+    </video>
+    <script src="sticky.js"></script>
+    <script>
+
+        enterView({
+            selector: 'section',
+            enter: function(el) {
+                el.classList.add('entered');
+            }
+        })
+    
+        var frameNumber = 0, // start video at frame 0
+        // lower numbers = faster playback
+        playbackConst = 390, 
+        // get page height from video duration
+        setHeight = document.getElementById("set-height"), 
+        // select video element         
+        vid = document.getElementById('v0'); 
+        // var vid = $('#v0')[0]; // jquery option
+
+    // dynamically set the page height according to video length
+    vid.addEventListener('loadedmetadata', function() {
+    setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+    });
+
+
+    // Use requestAnimationFrame for smooth playback
+    function scrollPlay(){  
+    var frameNumber  = window.pageYOffset/playbackConst;
+    vid.currentTime  = frameNumber;
+    window.requestAnimationFrame(scrollPlay);
+    }
+
+    window.requestAnimationFrame(scrollPlay);
+    
+    </script>
+    <header class="header">
+    </header>
+    <main>
+        <section class="thumbSection">
+            <h2 class="thumbTitle">Browse work</h2>
+            <div class="thumbTiles swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <a class="thumbTile" href="bbcevoke.html">
+                            <img class="thumbTile__image"
+                                src="bbc-evoke.001.jpeg"
+                                alt="BBC Evoke">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a class="thumbTile" href="spotifylive.html">
+                            <img class="thumbTile__image"
+                                src="spotify-live-najiba.jpg"
+                                >
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a class="thumbTile" href="#">
+                            <img class="thumbTile__image"
+                                src="blind%20plate%20cover.png"
+                                >
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a class="thumbTile" href="blackswan.html">
+                            <img class="thumbTile__image"
+                                src="blackSwan0.png"
+                                alt="Breaking Bad">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a class="thumbTile" href="#">
+                            <img class="thumbTile__image"
+                                src="eva-cover.jpeg"
+                                alt="The Crown">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a class="thumbTile" href="#">
+                            <img class="thumbTile__image"
+                                src="collisions-cover.jpg"
+                                >
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a class="thumbTile" href="#">
+                            <img class="thumbTile__image"
+                                src="project01-meetMelanoma-login000.png"
+                                >
+                        </a>
+                    </div>
+                </div>
+
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+        <section class="thumbSection">
+            <h2 class="thumbTitle">Browse by Designer</h2>
+            <div class="thumbTiles swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <a class="thumbTile" href="#">
+                            <img class="thumbTile__image"
+                                src="JackSimpson.png"
+                                >
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a class="thumbTile" href="#">
+                            <img class="thumbTile__image"
+                                src="om-profile.jpg"
+                                >
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a class="thumbTile" href="#">
+                            <img class="thumbTile__image"
+                                src="peter.jpg.JPG"
+                                >
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a class="thumbTile" href="#">
+                            <img class="thumbTile__image"
+                                src="aurorashahu.jpg.JPG"
+                                >
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a class="thumbTile" href="#">
+                            <img class="thumbTile__image"
+                                src="kitten-or-young-cat-wanted-602069141d549.jpg"
+                                alt="The Crown">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            spaceBetween: 4,
+            slidesPerView: 2,
+            loop: true,
+            freeMode: true,
+            loopAdditionalSlides: 5,
+            speed: 500,
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 5,
+                    slidesPerGroup: 5,
+                    freeMode: false
+                }
+            }
+        })
+    </script>
+    
+    
+    
+</body>
+</html>
