@@ -24,14 +24,18 @@ section {
 .content {
     position: sticky;
     position: -webkit-sticky;
-    width: 100%;
-    top: 33.3%;
+    left: 5px;
+    margin-right: 35%;
+    margin-left: 40%;
 }
 
 
 .content img{
     left: 5px;
+    margin-right: 35%;
+    margin-left: 40%;
 }
+
 h1 {
     font-size: 3em;
     background: #fff;
